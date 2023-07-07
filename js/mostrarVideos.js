@@ -1,6 +1,7 @@
-import { conectaApi } from "./conectaApi";
+import { conectaApi } from "./conectaApi.js";
 
 const lista = document.querySelector('[data-lista]');
+
 function constroiCard(titulo, descricao, url, imagem) {
     const video = document.createElement("li")
     video.className = "videos__item"
@@ -20,7 +21,8 @@ function constroiCard(titulo, descricao, url, imagem) {
 
 async function listaVideos() {
     const listaApi = await conectaApi.listaVideos();
-    listaApi.forEach(elemento => lista.appendChild(constroiCard(elemento.titulo, elemento.descricao, elemento.url, elemento.imagem)));
+    listaApi.forEach(elemento => lista.appendChild(
+        constroiCard(elemento.titulo, elemento.descricao, elemento.url, elemento.imagem)))
 }
 
-listaVideos()
+listaVideos();
